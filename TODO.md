@@ -1,0 +1,1 @@
+# TODO: Tailwind v3 Setup Complete\n\nSteps:\n1. [x] Installed Tailwind v3 + postcss + autoprefixer\n2. [x] Generated configs\n3. [x] Updated postcss.config.js for v3 (tailwindcss: {})\n4. [x] Tested dev server (http://localhost:5175)\n\nTailwind now uses stable v3 - styles should work.
