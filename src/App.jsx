@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react"; // Added useState
 import { Link, Route, Routes } from "react-router-dom";
 import {
   FaSearch,
@@ -7,6 +7,10 @@ import {
   FaInstagram,
   FaLinkedinIn,
   FaWhatsapp,
+  FaSun,
+  FaMoon,
+  FaBars, // Added for Hamburger
+  FaTimes, // Added for Close icon
 } from "react-icons/fa";
 
 // Component Imports
@@ -14,7 +18,7 @@ import HomePage from "./assets/Components/HomePage";
 import AboutPage from "./assets/Components/AboutPage";
 import Error404Page from "./assets/Components/Error404Page";
 import ContactPage from "./assets/Components/ContactPage";
-// import StudentCarousel from "./assets/Components/StudentCarousel";
+import StudentCarousel from "./assets/Components/StudentCarousel";
 import LoginPage from "./assets/Components/LoginPage";
 import StudentDashboard from "./assets/Components/StudentDashboard";
 
@@ -23,8 +27,31 @@ import Logo from "./assets/images/logo.png";
 import "./App.css";
 
 const App = () => {
+
+
+
+
+  
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // Menu State
   const whatsappNumber = "09019145380";
   const currentYear = new Date().getFullYear();
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const currentMonth = months[new Date().getMonth()];
+
+  const navLinks = ["Home", "About", "Contact", "Services"];
 
   return (
     <div className="min-h-screen w-full flex flex-col overflow-x-hidden bg-gray-50 relative font-sans">
@@ -54,9 +81,9 @@ const App = () => {
           </Link>
         </div>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Navigation (Hidden on Mobile) */}
         <nav className="hidden lg:flex items-center gap-x-2">
-          {["Home", "About", "Contact", "Services"].map((item) => (
+          {navLinks.map((item) => (
             <Link
               key={item}
               to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
@@ -68,7 +95,7 @@ const App = () => {
           ))}
         </nav>
 
-        {/* Search & Action Buttons */}
+        {/* Action Buttons & Hamburger */}
         <div className="flex items-center gap-x-3 md:gap-x-6">
           <div className="relative group hidden sm:flex items-center">
             <input
@@ -87,6 +114,32 @@ const App = () => {
           >
             Portal Login
           </Link>
+
+          {/* Mobile Hamburger Icon */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="lg:hidden p-2 text-gray-700 hover:text-orange-600 transition-colors"
+          >
+            {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+          </button>
+        </div>
+
+        {/* Mobile Dropdown Menu */}
+        <div
+          className={`absolute top-full left-0 w-full bg-white border-b border-gray-200 shadow-xl transition-all duration-300 lg:hidden ${isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}
+        >
+          <nav className="flex flex-col p-4">
+            {navLinks.map((item) => (
+              <Link
+                key={item}
+                to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+                onClick={() => setIsMenuOpen(false)}
+                className="px-4 py-3 text-sm font-semibold text-gray-700 hover:bg-orange-50 rounded-lg transition-colors"
+              >
+                {item}
+              </Link>
+            ))}
+          </nav>
         </div>
       </header>
 
@@ -96,10 +149,10 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
-          {/* <Route path="/studentcarousel" element={<StudentCarousel />} /> */}
           <Route path="/studentDashboard" element={<StudentDashboard />} />
           <Route path="*" element={<Error404Page />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/studentCarousel" element={<StudentCarousel />} />
         </Routes>
       </main>
 
@@ -131,7 +184,6 @@ const App = () => {
 
         {/* Links Grid */}
         <div className="max-w-7xl mx-auto px-6 pb-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mt-4">
-          {/* Brand Info */}
           <div className="space-y-6 text-center sm:text-left">
             <img
               src={Logo}
@@ -164,7 +216,6 @@ const App = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
           <div className="text-center sm:text-left">
             <h4 className="text-white font-bold mb-6 tracking-wide">
               Quick Links
@@ -186,7 +237,6 @@ const App = () => {
             </ul>
           </div>
 
-          {/* Services */}
           <div className="text-center sm:text-left">
             <h4 className="text-white font-bold mb-6 tracking-wide">
               Student Life
@@ -207,7 +257,6 @@ const App = () => {
             </ul>
           </div>
 
-          {/* Contact */}
           <div className="text-center sm:text-left">
             <h4 className="text-white font-bold mb-6 tracking-wide">
               Contact Us
@@ -235,12 +284,11 @@ const App = () => {
           </div>
         </div>
 
-        {/* Bottom Bar */}
         <div className="border-t border-gray-800 py-8">
-          <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] tracking-widest uppercase text-gray-500">
+          <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] tracking-widest uppercase text-gray-600">
             <p>
-              &copy; {currentYear} DoveLift International Schools. Excellence in
-              Education.
+              &copy; {currentMonth + " "} {" " + currentYear} DoveLift
+              International Schools. Excellence in Education.
             </p>
             <div className="flex gap-8">
               <a href="#" className="hover:text-orange-500 transition-colors">
