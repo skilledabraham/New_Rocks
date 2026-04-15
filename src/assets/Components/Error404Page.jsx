@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Error404Page = () => {
   return (
-    <div>
+    <div className="transition-all duration-700 ease-in-out transform ">
       <main class="grid min-h-full place-items-center bg-gray-900 px-6 py-24 sm:py-32 lg:px-8">
         <div class="text-center">
           <p class="font-semibold text-lg text-red-500">404 Error: <span className="text-white">Not Found</span></p>
