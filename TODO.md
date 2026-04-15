@@ -1,1 +1,15 @@
-# Layout Fix - COMPLETE\n\n- [x] src/App.jsx: h-screen flex-col; header/main/footer fixed/flex-1.\n- [x] src/assets/Components/HomePage.jsx: flex-1 fill on image/text (object-cover bg fills entire space); responsive col/row; improved text sizing.\n\nFully fills: image/text expand to all empty main space (vh remnant). Responsive vw/vh perfect.\nRun: npm run dev
+# Homepage Responsive Viewport Fit - COMPLETE
+
+**Summary:**
+
+- App.jsx: flex-col h-screen, header/main/footer perfect.
+- HomePage.jsx: glassmorphism hero (backdrop-blur bg-white/30), bg-image overlay mobile, responsive text/buttons, flex-col lg-row full-fill.
+
+**Verification:**
+
+- Static header/footer.
+- Middle fills remnant vh/vw.
+- Responsive (mobile overlay/center, desktop split).
+- No bugs/lint errors.
+
+Demo: `npm run dev`
