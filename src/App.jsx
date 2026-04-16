@@ -158,7 +158,7 @@ const App = () => {
           <div className="bg-orange-500/95 backdrop-blur-md p-6 md:p-10 rounded-2xl shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 border border-white/20">
             <div className="text-white text-center md:text-left">
               <h3 className="text-xl md:text-3xl font-bold">
-                Join the DoveLift Family
+                Join the DoveLift Family Today
               </h3>
               <p className="text-orange-100 text-sm mt-1">
                 Subscribe for admission alerts and school news.
