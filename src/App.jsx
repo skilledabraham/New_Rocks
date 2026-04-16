@@ -27,11 +27,6 @@ import Logo from "./assets/images/logo.png";
 import "./App.css";
 
 const App = () => {
-
-
-
-
-  
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Menu State
   const whatsappNumber = "09019145380";
   const currentYear = new Date().getFullYear();
